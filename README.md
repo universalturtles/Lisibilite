@@ -1,5 +1,9 @@
 # Lisibilite
-Repo for maintaining the code base for readability
+Repo for maintaining the code base for hybrid readability index calculation application. 
+It is called Lisibilite - meaning Readability in French.
+
+## Why this name?
+Because, it sounded fun!
 
 # **** Draft ****
 
