@@ -5,6 +5,9 @@
 - User Add
 - User Delete
 - User Update
+- Generate Reports
+- Get document versions
+- Compare Versions
 
 ## Future
 - Sentiment
