@@ -11,6 +11,7 @@ Because, it sounded fun!
 * Shyam Mohan K
 * Viren Chhabria
 * Arun Thundyill Saseendran
+* Debrup Chakraborty
 
 # Tech Stack
 | Attribute | Choice |
