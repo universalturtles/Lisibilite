@@ -1,3 +1,4 @@
+[![DepShield Badge](https://depshield.sonatype.org/badges/owner/repository/depshield.svg)](https://depshield.github.io)
 # Lisibilite
 Repo for maintaining the code base for hybrid readability index calculation application. 
 It is called Lisibilite - meaning Readability in French.
