@@ -39,3 +39,7 @@ https://github.com/ats0stv/Lisibilite/wiki
 > The APIs should be secured by API Tokens (The generation of API tokens for users can be made self service on a later stage. Initially it will be on request)
 
 
+# A sample Django REST Webapp
+
+https://github.com/rupdeb/PythonWebapp.git
+
