@@ -13,6 +13,7 @@
 - Sentiment
 - Magnitude of Emotion
 - Keyword Density Analysis
+- Reading Time
 - ...
 
 # General Response Codes
