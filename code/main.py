@@ -3,8 +3,8 @@ import yaml
 import logging
 import logging.config
 
-from config.AppConfiguration import LOG_DIR, LOG_CONFIG_FILE
 from lisibilite.Lisibilite import Lisibilite
+from config.AppConfiguration import LOG_DIR, LOG_CONFIG_FILE
 
 
 def init():
@@ -13,6 +13,7 @@ def init():
     :return: None
     """
     configureLogging()
+    logging.debug(f'{__name__} init')
     logging.debug('Log configuration completed')
 
 
@@ -34,6 +35,9 @@ def configureLogging():
 
 if __name__ == "__main__":
     init()
-    readability = Lisibilite(filename="./resources/sample_text.txt")
-    print(readability.computed)
+    readabilityWithFile = Lisibilite("./resources/sample_text.txt")
+    print(readabilityWithFile.computed)
+
+    readabilityWithContents = Lisibilite(contents="Some content")
+    print(readabilityWithContents.computed)
 
