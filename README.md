@@ -1,5 +1,7 @@
 Website: https://universalturtles.github.io/Lisibilite/
 
+[![CodeFactor](https://www.codefactor.io/repository/github/universalturtles/lisibilite/badge)](https://www.codefactor.io/repository/github/universalturtles/lisibilite)
+
 # Lisibilite
 Repo for maintaining the code base for hybrid readability index calculation application. 
 It is called Lisibilite - meaning Readability in French.
