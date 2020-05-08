@@ -1,6 +1,6 @@
 Website: https://universalturtles.github.io/Lisibilite/
 
-[![CodeFactor](https://www.codefactor.io/repository/github/universalturtles/lisibilite/badge)](https://www.codefactor.io/repository/github/universalturtles/lisibilite)
+[![CodeFactor](https://www.codefactor.io/repository/github/universalturtles/lisibilite/badge)](https://www.codefactor.io/repository/github/universalturtles/lisibilite) [![DepShield Badge](https://depshield.sonatype.org/badges/universalturtles/Lisibilite/depshield.svg)](https://depshield.github.io)
 
 # Lisibilite
 Repo for maintaining the code base for hybrid readability index calculation application. 
