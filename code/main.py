@@ -36,8 +36,4 @@ def configureLogging():
 if __name__ == "__main__":
     init()
     readabilityWithFile = Lisibilite("./resources/sample_text.txt")
-    print(readabilityWithFile.computed)
-
-    readabilityWithContents = Lisibilite(contents="Some content")
-    print(readabilityWithContents.computed)
-
+    output = readabilityWithFile.getReadabilityMetrics()
