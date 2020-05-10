@@ -4,12 +4,12 @@ import logging as LOG
 class CoreMetrics:
     def __init__(self):
         LOG.debug(f"{__name__} init")
-        self.totalWords = 0
-        self.totalSentences = 0
-        self.totalSyllables = 0
-        self.totalComplexWords = 0
-        self.totalEasyWords = 0
-        self.totalCharacters = 0
+        self.totalWords: int = 0
+        self.totalSentences: int = 0
+        self.totalSyllables: int = 0
+        self.totalComplexWords: int = 0
+        self.totalEasyWords: int = 0
+        self.totalCharacters: int = 0
 
     def setTotalWords(self, totalWords: int) -> None:
         """
@@ -112,3 +112,25 @@ class CoreMetrics:
         """
         LOG.debug(f'Getting total characters . Total characters  = {self.totalCharacters}')
         return self.totalCharacters
+
+    def __str__(self) -> str:
+        returnText = f'Total Sentences = {self.getTotalSentences()}\n'
+        returnText += f'Total Words = {self.getTotalWords()}\n'
+        returnText += f'Total Hard Words = {self.getTotalComplexWords()}\n'
+        returnText += f'Total Easy Words = {self.getTotalEasyWords()}\n'
+        returnText += f'Total Syllables = {self.getTotalSyllables()}\n'
+        returnText += f'Total Characters = {self.getTotalCharacters()}'
+        return  returnText
+
+    def __eq__(self, other):
+        if not isinstance(other, CoreMetrics):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.totalSentences == other.totalSentences and \
+               self.totalWords == other.totalWords and \
+               self.totalSyllables == other.totalSyllables and \
+               self.totalComplexWords == other.totalComplexWords and \
+               self.totalEasyWords == other.totalEasyWords and \
+               self.totalCharacters == other.totalCharacters
+
