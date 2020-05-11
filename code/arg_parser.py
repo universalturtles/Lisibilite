@@ -28,6 +28,3 @@ def process():
     else:
         raise Exception(f'Either input file or text is necessary for computing readability')
     return input_text,input_file,output_file,output_format
-
-if __name__ == "__main__":
-    process()
