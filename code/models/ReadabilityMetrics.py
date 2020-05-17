@@ -1,5 +1,7 @@
 import logging as LOG
+from typing import Dict
 
+from common.Constants import ARI, CLI, FKGL, FRES, FRY, GFI, LWS, SMOG
 from models.Score import Score
 
 
@@ -33,6 +35,7 @@ class ReadabilityMetrics:
         self.fres = Score(fres)
 
     def getFRES(self) -> Score:
+
         """
         Get the FRES Score
         :return: The FRES Score
@@ -183,3 +186,14 @@ class ReadabilityMetrics:
             self.cli == other.cli and \
             self.lws == other.lws and \
             self.fry == other.fry
+
+    def getReadabilityMetricsDict(self) -> Dict[str, Score]:
+
+        return {FRES: self.fres,
+            FKGL: self.fkgl, 
+            GFI: self.gfi, 
+            ARI: self.ari, 
+            SMOG: self.smog, 
+            CLI: self.cli,
+            LWS: self. lws,
+            FRY: self.fry}
