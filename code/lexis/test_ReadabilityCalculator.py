@@ -1,8 +1,8 @@
 from unittest import TestCase
 
+from lexis.ReadabilityCalculator import ReadabilityCalculator
 from models.CoreMetrics import CoreMetrics
 from models.ReadabilityMetrics import ReadabilityMetrics
-from lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class TestReadabilityCalculator(TestCase):

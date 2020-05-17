@@ -2,8 +2,9 @@ import logging as LOG
 
 import nltk
 import syllables
-from models.CoreMetrics import CoreMetrics
 from nltk import sent_tokenize
+
+from models.CoreMetrics import CoreMetrics
 
 
 class LexisCalculator:
