@@ -1,12 +1,18 @@
 import logging as LOG
 
-from customexceptions.ReadabilityErrors import BadInputError
+from customexceptions.ReadabilityErrors import BadInputError, IOError
 from inputoutput.FileReader import FileReader
 from lexis.LexisCalculator import LexisCalculator
 from lexis.ReadabilityCalculator import ReadabilityCalculator
 from models.CoreMetrics import CoreMetrics
 from models.OutputDataModel import OutputDataModel
 from models.ReadabilityMetrics import ReadabilityMetrics
+from utils.helpers.metahelper import printLogo
+from utils.io.FileReader import FileReader
+
+<<<<<<< HEAD
+=======
+>>>>>>> 15 organised imports using python isort
 
 
 class Lisibilite:

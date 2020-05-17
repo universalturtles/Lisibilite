@@ -1,8 +1,8 @@
 import logging as LOG
 
 from config.AppConfiguration import APP_LOGO_DAT
-from inputoutput import FileReader
 from utils.encoding.Base64 import decodeString
+from utils.io.FileReader import FileReader
 
 
 def printLogo() -> None:
