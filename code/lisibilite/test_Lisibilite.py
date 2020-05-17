@@ -13,7 +13,7 @@ class TestLisibilite(TestCase):
 
     def test_get_readability_metrics_inputFile(self):
         # Arrange
-        filePath = "../resources/sample_text.txt"
+        filePath = "./resources/sample_text.txt"
         lisibilite = Lisibilite(filePath)
         # Act
         outputModel = lisibilite.getReadabilityMetrics()
@@ -24,7 +24,7 @@ class TestLisibilite(TestCase):
 
     def test_get_readability_metrics_inputString(self):
         # Arrange
-        filePath = "../resources/sample_text.txt"
+        filePath = "./resources/sample_text.txt"
         with open(filePath, 'r', encoding='utf8') as fileObject:
             text = fileObject.read()
         lisibilite = Lisibilite(contents=text)

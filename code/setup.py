@@ -37,7 +37,8 @@ setup(
         "PyYAML==5.3.1",
         "regex==2020.5.7",
         "tqdm==4.46.0",
-        "syllables==0.1.0"
+        "syllables==0.1.0",
+        "mock==4.0.2"
     ],
     python_requires='>=3'
 )
