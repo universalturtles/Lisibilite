@@ -1,4 +1,5 @@
 import logging as LOG
+
 from models.CoreMetrics import CoreMetrics
 from models.ReadabilityMetrics import ReadabilityMetrics
 
@@ -28,7 +29,9 @@ class OutputDataModel:
         LOG.debug(f'Getting Core Metrics')
         return self.coreMetrics
 
-    def setReadabilityMetrics(self, readabilityMetrics: ReadabilityMetrics) -> None:
+    def setReadabilityMetrics(
+            self,
+            readabilityMetrics: ReadabilityMetrics) -> None:
         """
         Set the Readability Metrics
         :param coreMetrics: The Readability Metrics
@@ -84,7 +87,7 @@ class OutputDataModel:
         returnText += f'*** Readability Metrics\n{str(self.getReadabilityMetrics())}\n'
         returnText += f'Category = {self.getCategory()}\n'
         returnText += f'Description = {self.getDescription()}'
-        return  returnText
+        return returnText
 
     def __eq__(self, other):
         if not isinstance(other, OutputDataModel):
@@ -92,6 +95,6 @@ class OutputDataModel:
             return NotImplemented
 
         return self.coreMetrics == other.coreMetrics and \
-               self.readabilityMetrics == other.readabilityMetrics and \
-               self.category == other.category and \
-               self.description == other.description
+            self.readabilityMetrics == other.readabilityMetrics and \
+            self.category == other.category and \
+            self.description == other.description

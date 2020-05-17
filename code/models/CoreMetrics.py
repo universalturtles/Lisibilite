@@ -35,14 +35,15 @@ class CoreMetrics:
         :return: None
         """
         LOG.debug(f'Setting total sentences as {totalSentences}')
-        self.totalSentences =  totalSentences
+        self.totalSentences = totalSentences
 
     def getTotalSentences(self) -> int:
         """
         Get the total sentences in the passage
         :return: The total number of sentences in the passage
         """
-        LOG.debug(f'Getting total sentences. Total Sentences = {self.totalSentences}')
+        LOG.debug(
+            f'Getting total sentences. Total Sentences = {self.totalSentences}')
         return self.totalSentences
 
     def setTotalSyllables(self, totalSyllables: int) -> None:
@@ -59,7 +60,8 @@ class CoreMetrics:
         Get the total syllables in the passage
         :return: The total syllables in the passage
         """
-        LOG.debug(f'Getting total syllables. Total syllables = {self.totalSyllables}')
+        LOG.debug(
+            f'Getting total syllables. Total syllables = {self.totalSyllables}')
         return self.totalSyllables
 
     def setTotalComplexWords(self, totalComplexWords: int) -> None:
@@ -76,7 +78,8 @@ class CoreMetrics:
         Get the total complex words  in the passage
         :return: The total complex words  in the passage
         """
-        LOG.debug(f'Getting total complex words . Total complex words  = {self.totalComplexWords}')
+        LOG.debug(
+            f'Getting total complex words . Total complex words  = {self.totalComplexWords}')
         return self.totalComplexWords
 
     def setTotalEasyWords(self, totalEasyWords: int) -> None:
@@ -93,7 +96,8 @@ class CoreMetrics:
         Get the total easy words  in the passage
         :return: The total easy words  in the passage
         """
-        LOG.debug(f'Getting total easy words . Total easy words  = {self.totalEasyWords}')
+        LOG.debug(
+            f'Getting total easy words . Total easy words  = {self.totalEasyWords}')
         return self.totalEasyWords
 
     def setTotalCharacters(self, totalCharacters: int) -> None:
@@ -110,7 +114,8 @@ class CoreMetrics:
         Get the total characters  in the passage
         :return: The total characters  in the passage
         """
-        LOG.debug(f'Getting total characters . Total characters  = {self.totalCharacters}')
+        LOG.debug(
+            f'Getting total characters . Total characters  = {self.totalCharacters}')
         return self.totalCharacters
 
     def __str__(self) -> str:
@@ -120,7 +125,7 @@ class CoreMetrics:
         returnText += f'Total Easy Words = {self.getTotalEasyWords()}\n'
         returnText += f'Total Syllables = {self.getTotalSyllables()}\n'
         returnText += f'Total Characters = {self.getTotalCharacters()}'
-        return  returnText
+        return returnText
 
     def __eq__(self, other):
         if not isinstance(other, CoreMetrics):
@@ -128,9 +133,8 @@ class CoreMetrics:
             return NotImplemented
 
         return self.totalSentences == other.totalSentences and \
-               self.totalWords == other.totalWords and \
-               self.totalSyllables == other.totalSyllables and \
-               self.totalComplexWords == other.totalComplexWords and \
-               self.totalEasyWords == other.totalEasyWords and \
-               self.totalCharacters == other.totalCharacters
-
+            self.totalWords == other.totalWords and \
+            self.totalSyllables == other.totalSyllables and \
+            self.totalComplexWords == other.totalComplexWords and \
+            self.totalEasyWords == other.totalEasyWords and \
+            self.totalCharacters == other.totalCharacters

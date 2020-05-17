@@ -36,7 +36,8 @@ class Score:
         Get the rounder value
         :return: The rounded value set to 2 decimal places
         """
-        LOG.debug(f'Getting rounded value. Rounded value = {self.roundedValue}')
+        LOG.debug(
+            f'Getting rounded value. Rounded value = {self.roundedValue}')
         return self.roundedValue
 
     def setLabel(self, label: str) -> None:

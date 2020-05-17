@@ -1,5 +1,6 @@
 import logging as LOG
 import math
+
 from models.CoreMetrics import CoreMetrics
 from models.ReadabilityMetrics import ReadabilityMetrics
 
@@ -18,8 +19,8 @@ class ReadabilityCalculator:
         :return: Flesch Reading Ease Score
         """
         fres = 206.835 - \
-               (1.015 * self.coreMetrics.getTotalWords() / self.coreMetrics.getTotalSentences()) - \
-               (84.6 * self.coreMetrics.getTotalSyllables() / self.coreMetrics.getTotalWords())
+            (1.015 * self.coreMetrics.getTotalWords() / self.coreMetrics.getTotalSentences()) - \
+            (84.6 * self.coreMetrics.getTotalSyllables() / self.coreMetrics.getTotalWords())
         return fres
 
     def computeFKGL(self) -> float:
@@ -29,7 +30,7 @@ class ReadabilityCalculator:
         """
         fkgl = (0.39 * self.coreMetrics.getTotalWords() / self.coreMetrics.getTotalSentences()) + \
                (11.8 * self.coreMetrics.getTotalSyllables() / self.coreMetrics.getTotalWords()) - \
-               15.59
+            15.59
         return fkgl
 
     def computeGFI(self) -> float:
@@ -38,8 +39,8 @@ class ReadabilityCalculator:
         :return: Gunning Fog Index
         """
         gfi = 0.4 * \
-              ((self.coreMetrics.getTotalWords() / self.coreMetrics.getTotalSentences()) + \
-               (100 * (self.coreMetrics.getTotalComplexWords() / self.coreMetrics.getTotalWords())))
+            ((self.coreMetrics.getTotalWords() / self.coreMetrics.getTotalSentences()) +
+             (100 * (self.coreMetrics.getTotalComplexWords() / self.coreMetrics.getTotalWords())))
         return gfi
 
     def computeARI(self) -> float:
@@ -56,9 +57,8 @@ class ReadabilityCalculator:
         Compute Simple Measure of Gobbledygook
         :return: Simple Measure of Gobbledygook
         """
-        smog = (1.0430 * math.sqrt(
-            self.coreMetrics.getTotalComplexWords() * (30 / self.coreMetrics.getTotalSentences()))) + \
-               3.1291
+        smog = (1.0430 * math.sqrt(self.coreMetrics.getTotalComplexWords()
+                                   * (30 / self.coreMetrics.getTotalSentences()))) + 3.1291
         return smog
 
     def computeCLI(self) -> float:
@@ -77,7 +77,7 @@ class ReadabilityCalculator:
         """
         intermediateScore = ((1 * (self.coreMetrics.getTotalEasyWords() / self.coreMetrics.getTotalWords() * 100)) +
                              (3 * (self.coreMetrics.getTotalComplexWords() / self.coreMetrics.getTotalWords() * 100))) \
-                            / (self.coreMetrics.getTotalSentences() / self.coreMetrics.getTotalWords() * 100)
+            / (self.coreMetrics.getTotalSentences() / self.coreMetrics.getTotalWords() * 100)
         if intermediateScore > 20:
             lws = intermediateScore / 2
         else:

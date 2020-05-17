@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from models.Score import Score
 
 

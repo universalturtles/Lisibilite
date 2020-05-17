@@ -1,5 +1,7 @@
 from unittest import TestCase
+
 from utils.lexis.LexisCalculator import LexisCalculator
+
 
 class TestLexisCalculator(TestCase):
 
@@ -19,12 +21,30 @@ class TestLexisCalculator(TestCase):
         metrics = lexis.computeMetrics()
 
         # Assert
-        self.assertEqual(expectedSentences, metrics.getTotalSentences(), "Unexpected number of sentences")
-        self.assertEqual(expectedWords, metrics.getTotalWords(), "Unexpected number of words")
-        self.assertEqual(expectedHardWords, metrics.getTotalComplexWords(), "Unexpected number of hard words")
-        self.assertEqual(expectedEasyWords, metrics.getTotalEasyWords(), "Unexpected number of easy words")
-        self.assertEqual(expectedSyllables, metrics.getTotalSyllables(), "Unexpected number of syllables")
-        self.assertEqual(expectedCharacters, metrics.getTotalCharacters(), "Unexpected number of characters")
+        self.assertEqual(
+            expectedSentences,
+            metrics.getTotalSentences(),
+            "Unexpected number of sentences")
+        self.assertEqual(
+            expectedWords,
+            metrics.getTotalWords(),
+            "Unexpected number of words")
+        self.assertEqual(
+            expectedHardWords,
+            metrics.getTotalComplexWords(),
+            "Unexpected number of hard words")
+        self.assertEqual(
+            expectedEasyWords,
+            metrics.getTotalEasyWords(),
+            "Unexpected number of easy words")
+        self.assertEqual(
+            expectedSyllables,
+            metrics.getTotalSyllables(),
+            "Unexpected number of syllables")
+        self.assertEqual(
+            expectedCharacters,
+            metrics.getTotalCharacters(),
+            "Unexpected number of characters")
 
     def test_compute_metrics_empty_string(self):
         # Arrange
@@ -40,9 +60,27 @@ class TestLexisCalculator(TestCase):
         metrics = lexis.computeMetrics()
 
         # Assert
-        self.assertEqual(expectedSentences, metrics.getTotalSentences(), "Unexpected number of sentences")
-        self.assertEqual(expectedWords, metrics.getTotalWords(), "Unexpected number of words")
-        self.assertEqual(expectedHardWords, metrics.getTotalComplexWords(), "Unexpected number of hard words")
-        self.assertEqual(expectedEasyWords, metrics.getTotalEasyWords(), "Unexpected number of easy words")
-        self.assertEqual(expectedSyllables, metrics.getTotalSyllables(), "Unexpected number of syllables")
-        self.assertEqual(expectedCharacters, metrics.getTotalCharacters(), "Unexpected number of characters")
+        self.assertEqual(
+            expectedSentences,
+            metrics.getTotalSentences(),
+            "Unexpected number of sentences")
+        self.assertEqual(
+            expectedWords,
+            metrics.getTotalWords(),
+            "Unexpected number of words")
+        self.assertEqual(
+            expectedHardWords,
+            metrics.getTotalComplexWords(),
+            "Unexpected number of hard words")
+        self.assertEqual(
+            expectedEasyWords,
+            metrics.getTotalEasyWords(),
+            "Unexpected number of easy words")
+        self.assertEqual(
+            expectedSyllables,
+            metrics.getTotalSyllables(),
+            "Unexpected number of syllables")
+        self.assertEqual(
+            expectedCharacters,
+            metrics.getTotalCharacters(),
+            "Unexpected number of characters")

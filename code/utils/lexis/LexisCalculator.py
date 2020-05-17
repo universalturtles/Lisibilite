@@ -1,8 +1,9 @@
 import logging as LOG
+
 import nltk
 import syllables
-from nltk import sent_tokenize
 from models.CoreMetrics import CoreMetrics
+from nltk import sent_tokenize
 
 
 class LexisCalculator:
@@ -30,7 +31,7 @@ class LexisCalculator:
         characterCount: int = 0
         syllableCount: int = 0
         hardWords: int = 0
-        easyWords:int = 0
+        easyWords: int = 0
 
         sentences = sent_tokenize(self.inputText)
         sentenceCount = len(sentences)

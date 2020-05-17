@@ -1,4 +1,5 @@
 import logging as LOG
+
 from models.Score import Score
 
 
@@ -21,9 +22,6 @@ class ReadabilityMetrics:
         self.cli_desc = "Coleman-Liau Index"
         self.lws_desc = "Linsear Write Score"
         self.fry_desc = "Fry Readability Formula"
-
-
-
 
     def setFRES(self, fres: float) -> None:
         """
@@ -178,10 +176,10 @@ class ReadabilityMetrics:
             return NotImplemented
 
         return self.fres == other.fres and \
-               self.fkgl == other.fkgl and \
-               self.gfi == other.gfi and \
-               self.ari == other.ari and \
-               self.smog == other.smog and \
-               self.cli == other.cli and \
-               self.lws == other.lws and \
-               self.fry == other.fry
+            self.fkgl == other.fkgl and \
+            self.gfi == other.gfi and \
+            self.ari == other.ari and \
+            self.smog == other.smog and \
+            self.cli == other.cli and \
+            self.lws == other.lws and \
+            self.fry == other.fry

@@ -1,7 +1,8 @@
 from unittest import TestCase
+
 from models.CoreMetrics import CoreMetrics
-from utils.lexis.ReadabilityCalculator import ReadabilityCalculator
 from models.ReadabilityMetrics import ReadabilityMetrics
+from utils.lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class TestReadabilityCalculator(TestCase):
@@ -56,7 +57,7 @@ class TestReadabilityCalculator(TestCase):
         self.assertEqual(expectedScore, actualScore)
 
     def test_compute_readability_metrics(self):
-        #Arrange
+        # Arrange
         expectedReadabilityMetrics = ReadabilityMetrics()
         expectedReadabilityMetrics.setFRES(73.38560606060608)
         expectedReadabilityMetrics.setFKGL(4.243063973063972)

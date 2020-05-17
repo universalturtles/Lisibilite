@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from customexceptions.ReadabilityErrors import BadInputError, IOError
 from lisibilite.Lisibilite import Lisibilite
 
@@ -7,7 +8,8 @@ class TestLisibilite(TestCase):
     def test_get_readability_bad_reqeust(self):
         with self.assertRaises(BadInputError) as context:
             lisibilite = Lisibilite()
-            self.assertTrue('Bad input. One of filename or contents should be set' in context.exception)
+            self.assertTrue(
+                'Bad input. One of filename or contents should be set' in context.exception)
 
     def test_get_readability_metrics_inputFile(self):
         # Arrange

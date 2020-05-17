@@ -1,12 +1,12 @@
 import logging as LOG
 
-from utils.io.FileReader import FileReader
-from models.CoreMetrics import CoreMetrics
-from models.ReadabilityMetrics import ReadabilityMetrics
 from customexceptions.ReadabilityErrors import BadInputError, IOError
+from models.CoreMetrics import CoreMetrics
+from models.OutputDataModel import OutputDataModel
+from models.ReadabilityMetrics import ReadabilityMetrics
+from utils.io.FileReader import FileReader
 from utils.lexis.LexisCalculator import LexisCalculator
 from utils.lexis.ReadabilityCalculator import ReadabilityCalculator
-from models.OutputDataModel import OutputDataModel
 
 
 class Lisibilite:
@@ -17,7 +17,7 @@ class Lisibilite:
         :param contents: Optional | The string for which the metrics should be computed
         """
         LOG.debug(f'{__name__} init')
-        self.computed = False
+        self.outputModel = OutputDataModel()
 
         if filename:
             self.outputModel = self.__computeMetricsFromFile(filename)
@@ -25,8 +25,8 @@ class Lisibilite:
             self.outputModel = self.__computeMetricsFromString(contents)
         else:
             LOG.error('Bad input. One of filename or contents should be set')
-            raise BadInputError('Bad input. One of filename or contents should be set')
-
+            raise BadInputError(
+                'Bad input. One of filename or contents should be set')
 
     def getReadabilityMetrics(self) -> OutputDataModel:
         """
@@ -34,7 +34,6 @@ class Lisibilite:
         :return: The output model
         """
         return self.outputModel
-
 
     def __computeMetricsFromFile(self, filename: str) -> CoreMetrics:
         """
@@ -48,9 +47,10 @@ class Lisibilite:
             contentsOfFile = reader.read(filename)
             return self.__computeMetricsFromString(contentsOfFile)
         except Exception as error:
-            LOG.error(f'Error in getting the contents from the file. Error = {error}')
-            raise Exception(f'Error in getting the contents from the file. Error = {error}')
-
+            LOG.error(
+                f'Error in getting the contents from the file. Error = {error}')
+            raise Exception(
+                f'Error in getting the contents from the file. Error = {error}')
 
     def __computeMetricsFromString(self, contents: str) -> CoreMetrics:
         """

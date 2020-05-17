@@ -1,4 +1,5 @@
 import logging as LOG
+
 from customexceptions.ReadabilityErrors import IOError
 
 
@@ -24,4 +25,5 @@ class FileReader:
             raise IOError(f'File {filename} not found. Error: {fnf_error}')
         except Exception as error:
             LOG.error(f'Error in reading the file {filename}. Error: {error}')
-            raise IOError(f'Error in reading the file {filename}. Error: {error}')
+            raise IOError(
+                f'Error in reading the file {filename}. Error: {error}')
