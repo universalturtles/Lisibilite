@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.png' %}" />
+	<title>Lisibilite</title>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="{% static 'images/icon.png' %}" alt="logo" />
+  <h1>Lisibilite</h1>
+</div>
+<br><br>
+
+<form id="userinput" action="{% url 'userinput' %}" method="post">
+	{% csrf_token %}
+
+	<!-- {{lisibiliteForm}} -->
+
+	<label for="text_category">Category: </label>
+	<input id="text_category" type="text" name="text_category">
+	<br><br>
+
+	<label for="text_purpose">Purpose: </label>
+	<input id="text_purpose" type="text" name="text_purpose">
+	<br><br>
+
+	<label for="text_content">Enter your text below: </label><br>
+	<textarea id="text_content" name="text_content" rows="25" cols="170" placeholder="Type here..."></textarea>
+	<br><br>
+
+	<input type="submit" value="Calculate Scores">
+	<input type="reset" value="Reset">
+
+</form>
+
+</html>
