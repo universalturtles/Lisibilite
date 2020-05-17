@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.png' %}" />
+	<title>Lisibilite</title>
+</head>
+
+<body>
+<div class="header">
+  <img src="{% static 'images/icon.png' %}" alt="logo" />
+  <h1>Lisibilite</h1>
+	<br>
+	<h2>This is the Lisibilite home page</h2>
+</div>
+<br><br>
+
+<h2><a href={% url 'userinput' %}>Readability Score Calculation</a></h2>
+
+</html>
