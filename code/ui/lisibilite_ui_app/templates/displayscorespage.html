@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.png' %}" />
+	<title>Lisibilite</title>
+</head>
+
+<body>
+  <div class="header">
+    <img src="{% static 'images/icon.png' %}" alt="logo" />
+    <h1>Lisibilite</h1>
+  	<br>
+  	<h2>Lisibilite Metrics Display</h2>
+  </div>
+
+	<br><br>
+
+	<div class="metrics">
+		<table id="core_metrics">
+			<caption><b>Core Metrics</b></caption>
+			<thead>
+				<tr>
+					<th rowspan="2">Text Category</th>
+	     		<th rowspan="2">Text Purpose</th>
+					<th rowspan="2">Total Words</th>
+	     		<th rowspan="2">Total Sentences</th>
+	     		<th rowspan="2">Total Complex Words</th>
+	     		<th rowspan="2">Total Easy Words</th>
+			 		<th rowspan="2">Total Syllables</th>
+	     		<th rowspan="2">Total Characters</th>
+	    	</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ textCategory }}</td>
+					<td>{{ textPurpose }}</td>
+					<td>{{ totalWords }}</td>
+					<td>{{ totalSentences }}</td>
+					<td>{{ totalHardWords }}</td>
+					<td>{{ totalEasyWords }}</td>
+					<td>{{ totalSyllables }}</td>
+					<td>{{ totalCharacters }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br><br><br>
+
+		<table id="readability_metrics">
+			<caption><b>Readability Metrics</b></caption>
+			<thead>
+				<tr>
+					<th rowspan="2">Calculation Method</th>
+	     		<th rowspan="2">Readability Score</th>
+	     		<th rowspan="2">Readability Score Interpretation</th>
+	    	</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Automated Readability Index</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Coleman-Liau Index</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Flesch-Kincaid Grade Level</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Flesch Reading Ease Score</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Fry Readability Formula</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Gunning Fog Index</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Linsear Write Score</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Simple Measure of Gobbledygook</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be added</td>
+				</tr>
+				<tr>
+					<td>Lisibilite Normalized Score</td>
+					<td>{{ totalSentences }}</td>
+					<td>To be decided</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<br><br>
+
+	<h2><a href={% url 'home' %}>Back to Home Page</a></h2>
+</body>
+</html>
