@@ -1,0 +1,17 @@
+Core Metrics,Total Count
+Characters,260
+Words,54
+Sentences,11
+Syllables,82
+Easy Words,54
+Complex Words,51
+
+Algorithm,Score,Description
+Flesch Reading Ease Score,73.39,
+Flesch-Kincaid Grade Level,4.24,
+Gunning Fog Index,39.74,
+Automated Readability Index,3.7,
+Simple Measure of Gobbledygook,15.43,
+Coleman-Liau Index,6.48,
+Linsear Write Score,6.09,
+Fry Readability Formula,0.0,
