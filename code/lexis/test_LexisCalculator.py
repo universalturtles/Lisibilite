@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from utils.lexis import LexisCalculator
+from lexis import LexisCalculator
 
 
 class TestLexisCalculator(TestCase):
