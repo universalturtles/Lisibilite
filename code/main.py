@@ -3,10 +3,13 @@ import logging.config
 import os
 
 import yaml
-
-from config.AppConfiguration import LOG_CONFIG_FILE, LOG_DIR
-from lisibilite.Lisibilite import Lisibilite
 from arg_parser import ParseArguments as arg_parser
+from config.AppConfiguration import LOG_CONFIG_FILE, LOG_DIR
+from inputoutput.FileWriter import FileWriter
+from lisibilite.Lisibilite import Lisibilite
+from models.CoreMetrics import CoreMetrics
+from models.OutputDataModel import OutputDataModel
+from models.ReadabilityMetrics import ReadabilityMetrics
 
 
 def init():
@@ -43,3 +46,5 @@ if __name__ == "__main__":
     arg_parser.process_args()
     readabilityWithFile = Lisibilite("./resources/sample_text.txt")
     output = readabilityWithFile.getReadabilityMetrics()
+    fw = FileWriter()
+    fw.writeCsv(output, "./resources/sample_op.csv")
