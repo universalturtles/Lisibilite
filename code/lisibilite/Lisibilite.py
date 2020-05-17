@@ -4,9 +4,9 @@ from customexceptions.ReadabilityErrors import BadInputError
 from models.CoreMetrics import CoreMetrics
 from models.OutputDataModel import OutputDataModel
 from models.ReadabilityMetrics import ReadabilityMetrics
-from utils.io.FileReader import FileReader
-from lexis import LexisCalculator
-from lexis import ReadabilityCalculator
+from inputoutput.FileReader import FileReader
+from lexis.LexisCalculator import LexisCalculator
+from lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class Lisibilite:

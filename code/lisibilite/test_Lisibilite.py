@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from customexceptions.ReadabilityErrors import BadInputError, IOError
+from customexceptions.ReadabilityErrors import BadInputError
 from lisibilite.Lisibilite import Lisibilite
 
 

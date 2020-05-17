@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from models.CoreMetrics import CoreMetrics
 from models.ReadabilityMetrics import ReadabilityMetrics
-from lexis import ReadabilityCalculator
+from lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class TestReadabilityCalculator(TestCase):

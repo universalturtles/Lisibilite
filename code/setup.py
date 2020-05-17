@@ -5,7 +5,7 @@ setup(
     # Ref: https://docs.python.org/3/distutils/setupscript.html
     name='lisibilite',
     version='1.0.0',
-    packages=['utils', 'utils.io', 'utils.lexis', 'utils.helpers', 'utils.encoding', 'config', 'models', 'lisibilite',
+    packages=['utils', 'utils.inputoutput', 'utils.lexis', 'utils.helpers', 'utils.encoding', 'config', 'models', 'lisibilite',
               'customexceptions'],
     url='',
     license='MIT',
