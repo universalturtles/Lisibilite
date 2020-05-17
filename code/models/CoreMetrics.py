@@ -4,12 +4,12 @@ import logging as LOG
 class CoreMetrics:
     def __init__(self):
         LOG.debug(f"{__name__} init")
-        self.totalWords = 0
-        self.totalSentences = 0
-        self.totalSyllables = 0
-        self.totalComplexWords = 0
-        self.totalEasyWords = 0
-        self.totalCharacters = 0
+        self.totalWords: int = 0
+        self.totalSentences: int = 0
+        self.totalSyllables: int = 0
+        self.totalComplexWords: int = 0
+        self.totalEasyWords: int = 0
+        self.totalCharacters: int = 0
 
     def setTotalWords(self, totalWords: int) -> None:
         """
@@ -35,14 +35,15 @@ class CoreMetrics:
         :return: None
         """
         LOG.debug(f'Setting total sentences as {totalSentences}')
-        self.totalSentences =  totalSentences
+        self.totalSentences = totalSentences
 
     def getTotalSentences(self) -> int:
         """
         Get the total sentences in the passage
         :return: The total number of sentences in the passage
         """
-        LOG.debug(f'Getting total sentences. Total Sentences = {self.totalSentences}')
+        LOG.debug(
+            f'Getting total sentences. Total Sentences = {self.totalSentences}')
         return self.totalSentences
 
     def setTotalSyllables(self, totalSyllables: int) -> None:
@@ -59,7 +60,8 @@ class CoreMetrics:
         Get the total syllables in the passage
         :return: The total syllables in the passage
         """
-        LOG.debug(f'Getting total syllables. Total syllables = {self.totalSyllables}')
+        LOG.debug(
+            f'Getting total syllables. Total syllables = {self.totalSyllables}')
         return self.totalSyllables
 
     def setTotalComplexWords(self, totalComplexWords: int) -> None:
@@ -76,7 +78,8 @@ class CoreMetrics:
         Get the total complex words  in the passage
         :return: The total complex words  in the passage
         """
-        LOG.debug(f'Getting total complex words . Total complex words  = {self.totalComplexWords}')
+        LOG.debug(
+            f'Getting total complex words . Total complex words  = {self.totalComplexWords}')
         return self.totalComplexWords
 
     def setTotalEasyWords(self, totalEasyWords: int) -> None:
@@ -93,7 +96,8 @@ class CoreMetrics:
         Get the total easy words  in the passage
         :return: The total easy words  in the passage
         """
-        LOG.debug(f'Getting total easy words . Total easy words  = {self.totalEasyWords}')
+        LOG.debug(
+            f'Getting total easy words . Total easy words  = {self.totalEasyWords}')
         return self.totalEasyWords
 
     def setTotalCharacters(self, totalCharacters: int) -> None:
@@ -110,5 +114,27 @@ class CoreMetrics:
         Get the total characters  in the passage
         :return: The total characters  in the passage
         """
-        LOG.debug(f'Getting total characters . Total characters  = {self.totalCharacters}')
+        LOG.debug(
+            f'Getting total characters . Total characters  = {self.totalCharacters}')
         return self.totalCharacters
+
+    def __str__(self) -> str:
+        returnText = f'Total Sentences = {self.getTotalSentences()}\n'
+        returnText += f'Total Words = {self.getTotalWords()}\n'
+        returnText += f'Total Hard Words = {self.getTotalComplexWords()}\n'
+        returnText += f'Total Easy Words = {self.getTotalEasyWords()}\n'
+        returnText += f'Total Syllables = {self.getTotalSyllables()}\n'
+        returnText += f'Total Characters = {self.getTotalCharacters()}'
+        return returnText
+
+    def __eq__(self, other):
+        if not isinstance(other, CoreMetrics):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.totalSentences == other.totalSentences and \
+            self.totalWords == other.totalWords and \
+            self.totalSyllables == other.totalSyllables and \
+            self.totalComplexWords == other.totalComplexWords and \
+            self.totalEasyWords == other.totalEasyWords and \
+            self.totalCharacters == other.totalCharacters

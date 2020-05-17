@@ -1,10 +1,10 @@
-import os
-import yaml
 import logging
 import logging.config
+import os
 
+import yaml
+from config.AppConfiguration import LOG_CONFIG_FILE, LOG_DIR
 from lisibilite.Lisibilite import Lisibilite
-from config.AppConfiguration import LOG_DIR, LOG_CONFIG_FILE
 
 
 def init():
@@ -26,7 +26,10 @@ def configureLogging():
         logging.info('Setting up loggers')
         if not os.path.exists(LOG_DIR):
             os.makedirs(LOG_DIR)
-        logging.config.dictConfig(yaml.load(open(LOG_CONFIG_FILE), Loader=yaml.FullLoader))
+        logging.config.dictConfig(
+            yaml.load(
+                open(LOG_CONFIG_FILE),
+                Loader=yaml.FullLoader))
         logging.debug('Loggers initialized')
     except Exception as e:
         logging.error(f"Error in the Log Configuration. Error = {e}")
@@ -36,8 +39,4 @@ def configureLogging():
 if __name__ == "__main__":
     init()
     readabilityWithFile = Lisibilite("./resources/sample_text.txt")
-    print(readabilityWithFile.computed)
-
-    readabilityWithContents = Lisibilite(contents="Some content")
-    print(readabilityWithContents.computed)
-
+    output = readabilityWithFile.getReadabilityMetrics()

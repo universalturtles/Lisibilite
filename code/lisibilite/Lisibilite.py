@@ -1,9 +1,12 @@
 import logging as LOG
 
-from utils.io.FileReader import FileReader
-from models.CoreMetrics import CoreMetrics
-from utils.helpers.metahelper import printLogo
 from customexceptions.ReadabilityErrors import BadInputError, IOError
+from models.CoreMetrics import CoreMetrics
+from models.OutputDataModel import OutputDataModel
+from models.ReadabilityMetrics import ReadabilityMetrics
+from utils.io.FileReader import FileReader
+from utils.lexis.LexisCalculator import LexisCalculator
+from utils.lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class Lisibilite:
@@ -14,32 +17,23 @@ class Lisibilite:
         :param contents: Optional | The string for which the metrics should be computed
         """
         LOG.debug(f'{__name__} init')
-        printLogo()
-        self.computed = False
+        self.outputModel = OutputDataModel()
 
-        try:
-            if filename:
-                self.metrics = self.__computeMetricsFromFile(filename)
-                self.computed = True
-            elif contents:
-                self.metrics = self.__computeMetricsFromString(contents)
-                self.computed = True
-            else:
-                LOG.error('Bad input. One of filename or contents should be set')
-                raise BadInputError('Bad input. One of filename or contents should be set')
-        except Exception as error:
-            LOG.error(f'Error in computing the lisibilite errors. Error = {error}')
-            raise IOError(f'Error in computing the lisibilite errors. Error = {error}')
+        if filename:
+            self.outputModel = self.__computeMetricsFromFile(filename)
+        elif contents:
+            self.outputModel = self.__computeMetricsFromString(contents)
+        else:
+            LOG.error('Bad input. One of filename or contents should be set')
+            raise BadInputError(
+                'Bad input. One of filename or contents should be set')
 
-    def __computeMetricsFromString(self, contents: str) -> CoreMetrics:
+    def getReadabilityMetrics(self) -> OutputDataModel:
         """
-        Private: Method to compute the metrics from an input string
-        :param contents: The string for which the metrics should be computed
-        :return: Metrics object
+        The method to retrieve the Output Model
+        :return: The output model
         """
-        LOG.debug("Computing metrics from string")
-        metrics = CoreMetrics()
-        return metrics
+        return self.outputModel
 
     def __computeMetricsFromFile(self, filename: str) -> CoreMetrics:
         """
@@ -53,5 +47,28 @@ class Lisibilite:
             contentsOfFile = reader.read(filename)
             return self.__computeMetricsFromString(contentsOfFile)
         except Exception as error:
-            LOG.error(f'Error in getting the contents from the file. Error = {error}')
-            raise Exception(f'Error in getting the contents from the file. Error = {error}')
+            LOG.error(
+                f'Error in getting the contents from the file. Error = {error}')
+            raise Exception(
+                f'Error in getting the contents from the file. Error = {error}')
+
+    def __computeMetricsFromString(self, contents: str) -> CoreMetrics:
+        """
+        Private: Method to compute the metrics from an input string
+        :param contents: The string for which the metrics should be computed
+        :return: Metrics object
+        """
+        LOG.debug("Computing metrics from string")
+        outputData = OutputDataModel()
+
+        lexisMetrics = LexisCalculator(contents)
+        coreMetrics = lexisMetrics.computeMetrics()
+
+        readabilityMetrics = ReadabilityMetrics()
+        readabilityCalculator = ReadabilityCalculator(coreMetrics)
+        readabilityMetrics = readabilityCalculator.computeReadabilityMetrics()
+
+        outputData.setCoreMetrics(coreMetrics)
+        outputData.setReadabilityMetrics(readabilityMetrics)
+        LOG.debug(outputData)
+        return outputData
