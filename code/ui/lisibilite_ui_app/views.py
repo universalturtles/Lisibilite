@@ -15,43 +15,59 @@ class UserInputPageView(View):
 	def get(self, request):
 		return render(request, 'userinputpage.html')
 
+	def setOutputValuesToSession(self, request, outputModel):
+		coreMetrics = outputModel.coreMetrics
+		readabilityMetrics = outputModel.readabilityMetrics
+		# Text Category and Description
+		request.session['textCategory'] = outputModel.getCategory()
+		request.session['textPurpose'] = outputModel.getDescription()
+		# Core Metrics
+		request.session['totalWords'] = coreMetrics.getTotalWords()
+		request.session['totalSentences'] = coreMetrics.getTotalSentences()
+		request.session['totalHardWords'] = coreMetrics.getTotalComplexWords()
+		request.session['totalEasyWords'] = coreMetrics.getTotalEasyWords()
+		request.session['totalSyllables'] = coreMetrics.getTotalSyllables()
+		request.session['totalCharacters'] = coreMetrics.getTotalCharacters()
+		# Readability Metrics
+		request.session['fresValue'] = readabilityMetrics.getFRES().roundedValue
+		request.session['fresLabel'] = readabilityMetrics.getFRES().label
+		request.session['fkglValue'] = readabilityMetrics.getFKGL().roundedValue
+		request.session['fkglLabel'] = readabilityMetrics.getFKGL().label
+		request.session['gfiValue'] = readabilityMetrics.getGFI().roundedValue
+		request.session['gfiLabel'] = readabilityMetrics.getGFI().label
+		request.session['ariValue'] = readabilityMetrics.getARI().roundedValue
+		request.session['ariLabel'] = readabilityMetrics.getARI().label
+		request.session['smogValue'] = readabilityMetrics.getSMOG().roundedValue
+		request.session['smogLabel'] = readabilityMetrics.getSMOG().label
+		request.session['cliValue'] = readabilityMetrics.getCLI().roundedValue
+		request.session['cliLabel'] = readabilityMetrics.getCLI().label
+		request.session['lwsValue'] = readabilityMetrics.getLWS().roundedValue
+		request.session['lwsLabel'] = readabilityMetrics.getLWS().label
+		request.session['fryValue'] = readabilityMetrics.getFRY().roundedValue
+		request.session['fryLabel'] = readabilityMetrics.getFRY().label
+
 	def post(self, request):
 		contentString = request.POST.get('text_content', None)
 		if contentString is not None:
-			readabilityMetrics = Lisibilite(contents=contentString).metrics
+			outputModel = Lisibilite(contents=contentString).outputModel
+			if outputModel is not None:
+				self.setOutputValuesToSession(request, outputModel)
 		else:
-			readabilityMetrics = None
-
-		if readabilityMetrics is None:
-			readabilityMetrics = "I am sorry, I am empty now, because no text was provided!"
-
-		request.session['textCategory'] = request.POST.get('text_category', None)
-		request.session['textPurpose'] = request.POST.get('text_purpose', None)
-		request.session['totalWords'] = readabilityMetrics.getTotalWords()
-		request.session['totalSentences'] = readabilityMetrics.getTotalSentences()
-		request.session['totalHardWords'] = readabilityMetrics.getTotalComplexWords()
-		request.session['totalEasyWords'] = readabilityMetrics.getTotalEasyWords()
-		request.session['totalSyllables'] = readabilityMetrics.getTotalSyllables()
-		request.session['totalCharacters'] = readabilityMetrics.getTotalCharacters()
+			outputModel = None
 		return redirect('displayscores')
 
 
 class DisplayScoresPageView(View):
-	def __init__(self):
-		self.metricsDict = {}
+
+	def generateMetricsDict(self, request):
+		metricsDict = {}
+		for key in request.session.keys():
+			metricsDict[key] = request.session.get(key)
+		return metricsDict
 
 	def get(self, request):
-		# metricsDict = {}
-		self.metricsDict['textCategory'] = request.session.get('textCategory')
-		self.metricsDict['textPurpose'] = request.session.get('textPurpose')
-		self.metricsDict['totalWords'] = request.session.get('totalWords')
-		self.metricsDict['totalSentences'] = request.session.get('totalSentences')
-		self.metricsDict['totalHardWords'] = request.session.get('totalHardWords')
-		self.metricsDict['totalEasyWords'] = request.session.get('totalEasyWords')
-		self.metricsDict['totalSyllables'] = request.session.get('totalSyllables')
-		self.metricsDict['totalCharacters'] = request.session.get('totalCharacters')
-		return render(request, 'displayscorespage.html',
-			self.metricsDict)
+		metricsDict = self.generateMetricsDict(request)
+		return render(request, 'displayscorespage.html', metricsDict)
 
 	def post(self, request):
 		return render(request, 'displayscorespage.html')
