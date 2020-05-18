@@ -5,7 +5,7 @@ setup(
     # Ref: https://docs.python.org/3/distutils/setupscript.html
     name='lisibilite',
     version='1.0.0',
-    packages=['utils', 'utils.io', 'utils.lexis', 'utils.helpers', 'utils.encoding', 'config', 'models', 'lisibilite',
+    packages=['utils', 'utils.inputoutput', 'utils.lexis', 'utils.helpers', 'utils.encoding', 'config', 'models', 'lisibilite',
               'customexceptions'],
     url='',
     license='MIT',
@@ -37,7 +37,8 @@ setup(
         "PyYAML==5.3.1",
         "regex==2020.5.7",
         "tqdm==4.46.0",
-        "syllables==0.1.0"
+        "syllables==0.1.0",
+        "mock==4.0.2"
     ],
     python_requires='>=3'
 )

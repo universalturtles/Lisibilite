@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from utils.lexis.LexisCalculator import LexisCalculator
+from lexis.LexisCalculator import LexisCalculator
 
 
 class TestLexisCalculator(TestCase):
 
     def test_compute_metrics(self):
         # Arrange
-        with open("../../resources/sample_text.txt", "r", encoding='utf8') as fileObj:
+        with open("./resources/sample_text.txt", "r", encoding='utf8') as fileObj:
             text = fileObj.read()
         lexis = LexisCalculator(text)
         expectedSentences = 11

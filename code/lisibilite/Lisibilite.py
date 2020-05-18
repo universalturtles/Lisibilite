@@ -1,12 +1,12 @@
 import logging as LOG
 
-from customexceptions.ReadabilityErrors import BadInputError, IOError
+from customexceptions.ReadabilityErrors import BadInputError
+from inputoutput.FileReader import FileReader
+from lexis.LexisCalculator import LexisCalculator
+from lexis.ReadabilityCalculator import ReadabilityCalculator
 from models.CoreMetrics import CoreMetrics
 from models.OutputDataModel import OutputDataModel
 from models.ReadabilityMetrics import ReadabilityMetrics
-from utils.io.FileReader import FileReader
-from utils.lexis.LexisCalculator import LexisCalculator
-from utils.lexis.ReadabilityCalculator import ReadabilityCalculator
 
 
 class Lisibilite:

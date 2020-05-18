@@ -1,7 +1,8 @@
 from unittest import TestCase
 
 import mock
-from utils.io.FileReader import FileReader
+
+from inputoutput.FileReader import FileReader
 
 
 class TestFileReader(TestCase):
