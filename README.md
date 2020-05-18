@@ -29,7 +29,7 @@ Because, it sounded fun!
 |Orchestration | Kubernetes|
 
 # Wiki
-https: // github.com / ats0stv / Lisibilite / wiki
+https://github.com/universalturtles/Lisibilite/wiki
 
 # MVP
 
