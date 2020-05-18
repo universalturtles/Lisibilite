@@ -3,6 +3,7 @@ import logging.config
 import os
 
 import yaml
+
 from config.AppConfiguration import LOG_CONFIG_FILE, LOG_DIR
 from lisibilite.Lisibilite import Lisibilite
 
