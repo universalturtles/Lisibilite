@@ -17,3 +17,9 @@ class IOError(ReadabilityError):
     Input Output errors
     """
     pass
+
+class ArgumentParsingError(ReadabilityError):
+    """
+    Error occuring while parsing arguments
+    """
+    pass

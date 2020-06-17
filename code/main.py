@@ -6,6 +6,7 @@ import yaml
 
 from config.AppConfiguration import LOG_CONFIG_FILE, LOG_DIR
 from lisibilite.Lisibilite import Lisibilite
+from arg_parser import ParseArguments as arg_parser
 
 
 def init():
@@ -39,5 +40,6 @@ def configureLogging():
 
 if __name__ == "__main__":
     init()
+    arg_parser.process_args()
     readabilityWithFile = Lisibilite("./resources/sample_text.txt")
     output = readabilityWithFile.getReadabilityMetrics()
