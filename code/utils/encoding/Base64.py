@@ -3,6 +3,7 @@ import logging as LOG
 
 CHAR_ENCODING = 'ascii'
 
+
 def decodeString(encodedString: str) -> str:
     LOG.debug("Decoding Base 64 message from string")
     encodedBytes = encodedString.encode(CHAR_ENCODING)
