@@ -11,7 +11,7 @@ class HomePageView(View):
 		:param request: The django HTTP request object
 		:return The render object
 		"""
-		return render(request, 'homepage.html')
+		return render(request, 'index.html')
 
 	def post(self, request):
 		"""
@@ -30,7 +30,7 @@ class UserInputPageView(View):
 		:param request: The django HTTP request object
 		:return The render object
 		"""
-		return render(request, 'userinputpage.html')
+		return render(request, 'scorecalculation.html')
 
 	def setOutputValuesToSession(self, request, outputModel):
 		"""
@@ -85,7 +85,7 @@ class UserInputPageView(View):
 				self.setOutputValuesToSession(request, outputModel)
 		else:
 			outputModel = None
-		return redirect('displayscores')
+		return redirect('metricsdisplay')
 
 
 class DisplayScoresPageView(View):
@@ -108,7 +108,7 @@ class DisplayScoresPageView(View):
 		:return The render object
 		"""
 		metricsDict = self.generateMetricsDict(request)
-		return render(request, 'displayscorespage.html', metricsDict)
+		return render(request, 'metricsdisplay.html', metricsDict)
 
 	def post(self, request):
 		"""
@@ -116,4 +116,4 @@ class DisplayScoresPageView(View):
 		:param request: The django HTTP request object
 		:return The render object
 		"""
-		return render(request, 'displayscorespage.html')
+		return render(request, 'metricsdisplay.html')
