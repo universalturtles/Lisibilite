@@ -13,14 +13,6 @@ class HomePageView(View):
 		"""
 		return render(request, 'index.html')
 
-	def post(self, request):
-		"""
-		The function to handle the HTTP POST request for Home Page.
-		:param request: The django HTTP request object
-		:return None
-		"""
-		return None
-
 
 class UserInputPageView(View):
 
@@ -30,7 +22,7 @@ class UserInputPageView(View):
 		:param request: The django HTTP request object
 		:return The render object
 		"""
-		return render(request, 'scorecalculation.html')
+		return render(request, 'userinput.html')
 
 	def setOutputValuesToSession(self, request, outputModel):
 		"""
@@ -78,14 +70,14 @@ class UserInputPageView(View):
 		:param request: The django HTTP request object
 		:return The redirect object
 		"""
-		contentString = request.POST.get('text_content', None)
-		if contentString is not None:
+		contentString = request.POST.get('textContent', "")
+		if contentString:
 			outputModel = Lisibilite(contents=contentString).outputModel
 			if outputModel is not None:
 				self.setOutputValuesToSession(request, outputModel)
 		else:
 			outputModel = None
-		return redirect('metricsdisplay')
+		return redirect('displaymetrics')
 
 
 class DisplayScoresPageView(View):
@@ -108,12 +100,4 @@ class DisplayScoresPageView(View):
 		:return The render object
 		"""
 		metricsDict = self.generateMetricsDict(request)
-		return render(request, 'metricsdisplay.html', metricsDict)
-
-	def post(self, request):
-		"""
-		The function to handle the HTTP POST request for metrics display.
-		:param request: The django HTTP request object
-		:return The render object
-		"""
-		return render(request, 'metricsdisplay.html')
+		return render(request, 'displaymetrics.html', metricsDict)
