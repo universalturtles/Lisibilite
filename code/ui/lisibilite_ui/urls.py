@@ -22,7 +22,7 @@ from lisibilite_api_app import views as api_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ui_view.HomePageView.as_view(), name='home'),
-    path('scorecalculation', ui_view.UserInputPageView.as_view(), name='scorecalculation'),
-    path('metricsdisplay', ui_view.DisplayScoresPageView.as_view(), name='metricsdisplay'),
+    path('userinput', ui_view.UserInputPageView.as_view(), name='userinput'),
+    path('displaymetrics', ui_view.DisplayScoresPageView.as_view(), name='displaymetrics'),
     path('api/v1/readability', api_view.LisibiliteAPIView.as_view(), name='readabilityAPI')
 ]
