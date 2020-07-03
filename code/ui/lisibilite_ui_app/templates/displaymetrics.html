@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Lisibilite</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.png' %}" />
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">Lisibilite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'home' %}#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'userinput' %}#userinput">Score Calculation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'home' %}#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>Lisibilite Metrics</h1>
+    </div>
+  </header>
+
+  <section id="lisibilitemetrics" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Here are your results...</h2><br>
+          <table class="table table-bordered" id="textDetails">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" rowspan="2">Text Category</th>
+                <th scope="col" rowspan="2">Text Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ textCategory }}</td>
+                <td>{{ textPurpose }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br><br>
+
+          <table class="table table-bordered" id="coreMetrics">
+            <caption>Core Metrics</caption>
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" rowspan="2">Total Words</th>
+                <th scope="col" rowspan="2">Total Sentences</th>
+                <th scope="col" rowspan="2">Total Complex Words</th>
+                <th scope="col" rowspan="2">Total Easy Words</th>
+                <th scope="col" rowspan="2">Total Syllables</th>
+                <th scope="col" rowspan="2">Total Characters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ totalWords }}</td>
+                <td>{{ totalSentences }}</td>
+                <td>{{ totalHardWords }}</td>
+                <td>{{ totalEasyWords }}</td>
+                <td>{{ totalSyllables }}</td>
+                <td>{{ totalCharacters }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br><br>
+
+          <table class="table table-bordered" id="readabilityMetrics">
+            <caption>Readability Metrics</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" rowspan="2">#</th>
+                  <th scope="col" rowspan="2">Calculation Method</th>
+                  <th scope="col" rowspan="2">Readability Score</th>
+                  <th scope="col" rowspan="2">Readability Score Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Automated Readability Index</td>
+                  <td>{{ ariValue }}</td>
+                  <td>{{ ariLabel}}</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Coleman-Liau Index</td>
+                  <td>{{ cliValue }}</td>
+                  <td>{{ cliLabel }}</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Flesch-Kincaid Grade Level</td>
+                  <td>{{ fkglValue }}</td>
+                  <td>{{ fkglLabel}}</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Flesch Reading Ease Score</td>
+                  <td>{{ fresValue }}</td>
+                  <td>{{ fresLabel}}</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Fry Readability Formula</td>
+                  <td>{{ fryValue }}</td>
+                  <td>{{ fryLabel }}</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Gunning Fog Index</td>
+                  <td>{{ gfiValue }}</td>
+                  <td>{{ gfiLabel }}</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Linsear Write Score</td>
+                  <td>{{ lwsValue }}</td>
+                  <td>{{ lwsLabel }}</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Simple Measure of Gobbledygook</td>
+                  <td>{{ smogValue }}</td>
+                  <td>{{ smogLabel }}</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Lisibilite Normalized Score</td>
+                  <td>0.0</td>
+                  <td>To be decided</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-lg btn-block" href="{% url 'userinput' %}#userinput" role="button">
+          Back to Readability Index Calculation
+        </a>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Universal Turtles 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="{% static 'js/scrolling-nav.js' %}"></script>
+
+</body>
+
+</html>
