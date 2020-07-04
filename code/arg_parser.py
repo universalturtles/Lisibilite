@@ -22,14 +22,14 @@ class ParseArguments:
         outputFile = args.output_file
         outputFormat = '.' + args.format
         outputFile = ParseArguments.validateArgs(inputFile,inputText,outputFile,outputFormat)
-        print(outputFile)
         return dict(text = inputText, file = inputFile, output = outputFile, format = outputFormat)
     
+        
+    def validateArgs(inputFile,inputText,outputFile,outputFormat):
         """
         Method to validate all system arguments
         :return: The output file name
-        """
-    def validateArgs(inputFile,inputText,outputFile,outputFormat):
+        """	
         if not inputFile:
             if not inputText:
                 raise ArgumentParsingError(f'Either input file or text is necessary for computing readability')
