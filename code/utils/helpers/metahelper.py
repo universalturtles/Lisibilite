@@ -1,7 +1,7 @@
 import logging as LOG
 
 from config.AppConfiguration import APP_LOGO_DAT
-from inputoutput import FileReader
+from inputoutput.FileReader import FileReader
 from utils.encoding.Base64 import decodeString
 
 

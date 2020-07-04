@@ -1,4 +1,8 @@
 import logging as LOG
+from typing import Dict
+
+from common.Constants import (CHARACTERS, COMPLEX_WORDS, EASY_WORDS, SENTENCES,
+                              SYLLABLES, WORDS)
 
 
 class CoreMetrics:
@@ -138,3 +142,12 @@ class CoreMetrics:
             self.totalComplexWords == other.totalComplexWords and \
             self.totalEasyWords == other.totalEasyWords and \
             self.totalCharacters == other.totalCharacters
+
+    def getMetricsDict(self) -> Dict[str, int]:
+
+        return {CHARACTERS: self.totalCharacters,
+            WORDS: self.totalWords, 
+            SENTENCES: self.totalSentences, 
+            SYLLABLES: self.totalSyllables, 
+            EASY_WORDS: self.totalWords, 
+            COMPLEX_WORDS: self.totalComplexWords}
