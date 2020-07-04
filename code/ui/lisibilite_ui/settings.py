@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hc)l7zu(fg*o_arf2(&&wj-)mkyr_j65+^#r5v*&b%6k*or0=1'
+SECRET_KEY = os.environ['LISIB_DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lisibilite_ui_app',
+    # 'rest_framework',
+    # 'lisibilite_api_app'
 ]
 
 MIDDLEWARE = [
