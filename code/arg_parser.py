@@ -12,7 +12,7 @@ class ParseArguments:
         :return: The argument values in a dictonary
         """
         parser = argparse.ArgumentParser(description = 'Calculate readability of a text, either input text or file is required along with output filename and format. Input file will have precedence over text.')
-        parser.add_argument('-t', '--text', help='The text on which processing would be done needs to be withing double quotes')
+        parser.add_argument('-t', '--text', help='The text on which processing would be done needs to be within double quotes and 500 characters long')
         parser.add_argument('-o', '--output-file', help='The name of the output file containing readability metrics', required=True)
         parser.add_argument('-i', '--input-file', help='The name of the input file on which processing would be done' , type=argparse.FileType('r'))
         parser.add_argument('-f', '--format', help='The format of the output file, default is CSV',choices =['pdf','csv'], default = 'csv')
@@ -32,13 +32,13 @@ class ParseArguments:
         """	
         if not inputFile:
             if not inputText:
-                raise ArgumentParsingError(f'Either input file or text is necessary for computing readability')
-            elif not len(inputText) > 500:
+                raise ArgumentParsingError('Either input file or text is necessary for computing readability')
+            elif len(inputText) < 500:
                 logging.debug(inputText)
-                raise ArgumentParsingError(f'Input text length has to be minimum 500 for computing readability')
-            else:
-                logging.debug(inputText)
-                logging.info(f'Using input text')
+                raise ArgumentParsingError('Input text length has to be minimum 500 for computing readability, currently has {} characters only'.format(len(inputText)))
+            logging.debug(inputText)
+            logging.info(f'Using input text')
+                
         else:
             logging.info(f'Using input file {inputFile}')
         try:
