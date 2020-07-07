@@ -24,3 +24,6 @@ LOG_CONFIG_FILE = "./config/logging.conf"
 
 # App
 APP_LOGO_DAT = "./resources/lisibilite_ascii_logo.dat"
+
+# Default output file name
+DEFAULT_OUTPUT_FILE_NAME = "output"
