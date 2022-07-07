@@ -6,7 +6,7 @@ setup(
     name='lisibilite',
     version='1.0.0',
     packages=['utils', 'inputoutput', 'lexis', 'utils.helpers', 'utils.encoding', 'config', 'models', 'lisibilite',
-              'customexceptions'],
+              'customexceptions', 'common'],
     url='',
     license='MIT',
     author='UniversalTurtles',

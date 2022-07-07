@@ -1,0 +1,8 @@
+django==3.2.14
+joblib==0.14.1
+nltk==3.5
+PyYAML==5.3.1
+regex==2020.5.7
+tqdm==4.46.0
+syllables==0.1.0
+mock==4.0.
