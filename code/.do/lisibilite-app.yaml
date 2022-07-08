@@ -27,7 +27,7 @@ region: lon
 services:
 - environment_slug: python
   github:
-    branch: ats0stv/test-deploy
+    branch: master
     deploy_on_push: true
     repo: universalturtles/Lisibilite
   http_port: 8000
@@ -41,7 +41,7 @@ services:
 static_sites:
 - environment_slug: python
   github:
-    branch: ats0stv/test-deploy
+    branch: master
     deploy_on_push: true
     repo: universalturtles/Lisibilite
   name: static-cdn
