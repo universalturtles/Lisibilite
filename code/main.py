@@ -1,6 +1,7 @@
 import logging
 import logging.config
 import os
+import nltk
 
 import yaml
 from arg_parser import ParseArguments as arg_parser
@@ -20,6 +21,11 @@ def init():
     configureLogging()
     logging.debug(f'{__name__} init')
     logging.debug('Log configuration completed')
+    # Natural Language Toolkit: Punkt sentence tokenizer
+    # Kiss, Tibor and Strunk, Jan (2006): Unsupervised Multilingual Sentence
+    #    Boundary Detection.  Computational Linguistics 32: 485-525.
+    # Ref: https://www.nltk.org/_modules/nltk/tokenize/punkt.html
+    nltk.download('punkt')
 
 
 def configureLogging():
@@ -43,7 +49,7 @@ def configureLogging():
 
 if __name__ == "__main__":
     init()
-    arg_parser.process_args()
+    # arg_parser.processArgs()
     readabilityWithFile = Lisibilite("./resources/sample_text.txt")
     output = readabilityWithFile.getReadabilityMetrics()
     fw = FileWriter()

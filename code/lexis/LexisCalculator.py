@@ -14,11 +14,6 @@ class LexisCalculator:
         """
         LOG.debug(f'{__name__} init')
 
-        # Natural Language Toolkit: Punkt sentence tokenizer
-        # Kiss, Tibor and Strunk, Jan (2006): Unsupervised Multilingual Sentence
-        #    Boundary Detection.  Computational Linguistics 32: 485-525.
-        # Ref: https://www.nltk.org/_modules/nltk/tokenize/punkt.html
-        nltk.download('punkt')
         self.inputText = inputText
         self.hardWordSyllableThreshold = 3
 

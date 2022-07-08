@@ -1,0 +1,87 @@
+# Workflow to test python code unit Py Unittest
+# Inspired from https://github.com/actions/starter-workflows/blob/main/ci/python-package.yml
+
+# Next Steps:
+# - Publish to PyPI - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+name: Python Lint and Test
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - '**.yml'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - '**.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        # Upgrade PIP
+        python -m pip install --upgrade pip
+        # Install PyTest
+        python -m pip install flake8
+        # Switch to Code directory
+        cd code
+        # Install Requirements
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # Switch to code dir
+        cd code
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        # Allowing the lints to pass with '--exit-zero'
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        # Upgrade PIP
+        python -m pip install --upgrade pip
+        # Install PyTest
+        python -m pip install pytest
+        # Switch to Code directory
+        cd code
+        # Install Requirements
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # Download NLTK punkt
+        python -m nltk.downloader punkt
+    - name: Test with pytest
+      run: |
+        # Switch to code dir
+        cd code
+        # Run PyTest
+        pytest
