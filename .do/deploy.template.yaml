@@ -1,9 +1,0 @@
-spec:
-  name: lisibilite-app
-  services:
-  - dockerfile_path: code/Dockerfile
-    git:
-      branch: ats0stv/test-deploy
-      repo_clone_url: https://github.com/universalturtles/Lisibilite.git
-    name: lisibilite-app
-
