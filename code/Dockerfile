@@ -27,10 +27,12 @@ RUN python setup.py install
 # port where the Django app runs  
 
 ENV LISIB_DJANGO_SECRET_KEY=testApp
+ENV DEBUG=True
+ENV DEVELOPMENT_MODE=True
 
 RUN python ui/manage.py migrate
 
-EXPOSE 8000  
+EXPOSE 80
 # start server 
 
-CMD python ui/manage.py runserver
+CMD python ui/manage.py runserver 0.0.0.0:80
