@@ -1,0 +1,9 @@
+name: lisibilite-app
+services:
+- dockerfile_path: code/Dockerfile
+  github:
+    branch: ats0stv/test-deploy
+    deploy_on_push: true
+    repo: universalturtles/Lisibilite
+  name: lisibilite-app
+
