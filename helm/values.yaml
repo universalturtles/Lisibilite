@@ -1,0 +1,20 @@
+name: lisibilite
+namespace: beta
+replicas: 1
+labels:
+  app: lisibilite
+  type: backend
+regcred: gitlabregcred
+lisibilite:
+  image: registry.gitlab.com/evil6/allid/lisibilite:latest
+  containerPort: 80
+svc:
+  port: 80
+  targetPort: 80
+  type: ClusterIP
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

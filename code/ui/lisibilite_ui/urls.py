@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from lisibilite_ui_app import views as ui_view
-from lisibilite_api_app import views as api_view
+# from lisibilite_api_app import views as api_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ui_view.HomePageView.as_view(), name='home'),
     path('userinput', ui_view.UserInputPageView.as_view(), name='userinput'),
     path('displaymetrics', ui_view.DisplayScoresPageView.as_view(), name='displaymetrics'),
-    path('api/v1/readability', api_view.LisibiliteAPIView.as_view(), name='readabilityAPI')
+    # path('api/v1/readability', api_view.LisibiliteAPIView.as_view(), name='readabilityAPI')
 ]
