@@ -1,0 +1,51 @@
+databases:
+- engine: PG
+  name: db
+  num_nodes: 1
+  size: basic-xxs
+  version: "12"
+domains:
+- domain: writebetter.xyz
+  type: PRIMARY
+  zone: writebetter.xyz
+envs:
+- key: DJANGO_ALLOWED_HOSTS
+  scope: RUN_AND_BUILD_TIME
+  value: lisibilite-app-bgejj.ondigitalocean.app,writebetter.xyz
+- key: DATABASE_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${db.DATABASE_URL}
+- key: DEBUG
+  scope: RUN_AND_BUILD_TIME
+  value: "True"
+- key: DJANGO_SECRET_KEY
+  scope: RUN_AND_BUILD_TIME
+  type: SECRET
+  value: EV[1:9HSIJArlDbqcMEKQMucERw8FQ++Mcon4:eq8dv+NnyucblhpRxQpVP3c2teZyf/EyryTiEBH3scI=]
+name: lisibilite-app
+region: lon
+services:
+- environment_slug: python
+  github:
+    branch: ats0stv/test-deploy
+    deploy_on_push: true
+    repo: universalturtles/Lisibilite
+  http_port: 8000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: lisibilite-app
+  routes:
+  - path: /
+  run_command: cd ui && gunicorn --worker-tmp-dir /dev/shm lisibilite_ui.wsgi:application
+  source_dir: code
+static_sites:
+- environment_slug: python
+  github:
+    branch: ats0stv/test-deploy
+    deploy_on_push: true
+    repo: universalturtles/Lisibilite
+  name: static-cdn
+  output_dir: ui/staticfiles
+  routes:
+  - path: /static
+  source_dir: code

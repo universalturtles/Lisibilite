@@ -13,16 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from lisibilite_ui_app import views as ui_view
-from lisibilite_api_app import views as api_view
+# from lisibilite_api_app import views as api_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ui_view.HomePageView.as_view(), name='home'),
     path('userinput', ui_view.UserInputPageView.as_view(), name='userinput'),
     path('displaymetrics', ui_view.DisplayScoresPageView.as_view(), name='displaymetrics'),
-    path('api/v1/readability', api_view.LisibiliteAPIView.as_view(), name='readabilityAPI')
+    # path('api/v1/readability', api_view.LisibiliteAPIView.as_view(), name='readabilityAPI')
 ]
+
+# Enable / Disable Dev Mode
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+
+if DEVELOPMENT_MODE is True:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()

@@ -9,6 +9,42 @@ It is called Lisibilite - meaning Readability in French.
 # Why this name?
 Because, it sounded fun!
 
+
+# Run in Dev Mode
+## Prereq
+1. Miniconda
+
+## Install Lisbilite
+1. Install Conda
+	```
+	conda create --name lisibilite python=3
+	```
+2. Activate Conda
+	```
+	conda activate lisibilite
+	```
+
+3. Install Lisibilite CLI
+	```
+	pip install -r requirements.txt
+	python setup.py install
+	```
+
+4. Start Django Server
+	```
+	export DEBUG="True"
+	export DEVELOPMENT_MODE="True"
+	cd ui
+	python manage.py migrate
+	python magage.py runserver
+	```
+
+## Run the server in server style mode using gunicorn instead of runserver
+```
+cd code/ui
+gunicorn lisibilite_ui.wsgi:application
+```
+
 # **** Draft ****
 
 # Key Contributors

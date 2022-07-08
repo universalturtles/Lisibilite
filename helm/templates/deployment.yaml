@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.labels.app | default "app" }}
+    type: {{ .Values.labels.type | default "type" }}
+  name: {{ .Values.name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.app }}
+    spec:
+      containers:
+      - image: {{ .Values.lisibilite.image }}
+        name: lisibilite
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "50m"
+          limits:
+            memory: "800Mi"
+            cpu: "100m"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.lisibilite.containerPort }}
+        readinessProbe:
+          tcpSocket:
+            port: {{ .Values.lisibilite.containerPort }}
+          initialDelaySeconds: 200
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: {{ .Values.lisibilite.containerPort }}
+          initialDelaySeconds: 200
+          periodSeconds: 20
+      imagePullSecrets:
+      - name: {{ .Values.regcred }}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+status: {}
