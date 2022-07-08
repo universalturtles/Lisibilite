@@ -35,5 +35,5 @@ RUN python ui/manage.py migrate
 EXPOSE 8000  
 # start server 
 
-CMD python ui/manage.py runserver
+CMD python ui/manage.py runserver 0.0.0.0:8000
 

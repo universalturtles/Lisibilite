@@ -39,6 +39,12 @@ Because, it sounded fun!
 	python magage.py runserver
 	```
 
+## Run the server in server style mode using gunicorn instead of runserver
+```
+cd code/ui
+gunicorn lisibilite_ui.wsgi:application
+```
+
 # **** Draft ****
 
 # Key Contributors
