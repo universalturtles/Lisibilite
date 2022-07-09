@@ -34,7 +34,7 @@ setup(
     install_requires=[
         "joblib==0.14.1",
         "nltk==3.5",
-        "PyYAML==5.3.1",
+        "PyYAML==5.4",
         "regex==2020.5.7",
         "tqdm==4.46.0",
         "syllables==0.1.0",
