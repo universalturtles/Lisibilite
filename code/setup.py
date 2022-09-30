@@ -32,7 +32,7 @@ setup(
         "Operating System :: MacOS"
     ],
     install_requires=[
-        "joblib==0.14.1",
+        "joblib==1.2.0",
         "nltk==3.5",
         "PyYAML==5.4",
         "regex==2020.5.7",
